@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36908.2
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimbusCharts.API", "LimbusCharts.API\LimbusCharts.API.csproj", "{0E320478-0B7C-411D-8E97-4984B9E0DB45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimbusDB.UI", "LimbusDB.UI\LimbusDB.UI.csproj", "{4D5BA0C5-FD4F-4B09-88ED-BFBE559A2D78}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E320478-0B7C-411D-8E97-4984B9E0DB45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E320478-0B7C-411D-8E97-4984B9E0DB45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E320478-0B7C-411D-8E97-4984B9E0DB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E320478-0B7C-411D-8E97-4984B9E0DB45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D5BA0C5-FD4F-4B09-88ED-BFBE559A2D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D5BA0C5-FD4F-4B09-88ED-BFBE559A2D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D5BA0C5-FD4F-4B09-88ED-BFBE559A2D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D5BA0C5-FD4F-4B09-88ED-BFBE559A2D78}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E8ED847-6B28-42CC-AA0B-EA0B729E14C2}
+	EndGlobalSection
+EndGlobal
