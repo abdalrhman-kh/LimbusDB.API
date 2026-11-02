@@ -127,7 +127,7 @@ namespace LimbusCharts.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdentityId")
+                    b.Property<Guid?>("IdentityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("MaxSpeed")
@@ -301,7 +301,6 @@ namespace LimbusCharts.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("SinnerSymbolImageURL")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SinnerId");
@@ -555,19 +554,15 @@ namespace LimbusCharts.API.Migrations
 
             modelBuilder.Entity("LimbusCharts.API.Models.Domain.IdentityUpTie", b =>
                 {
-                    b.HasOne("LimbusCharts.API.Models.Domain.Identity", "Identity")
+                    b.HasOne("LimbusCharts.API.Models.Domain.Identity", null)
                         .WithMany("IdentityUpTies")
-                        .HasForeignKey("IdentityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdentityId");
 
                     b.HasOne("LimbusCharts.API.Models.Domain.UpTie", "UpTie")
                         .WithMany()
                         .HasForeignKey("UpTieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Identity");
 
                     b.Navigation("UpTie");
                 });

@@ -514,9 +514,16 @@ span.flatpickr-weekday, .flatpickr-current-month .flatpickr-monthDropdown-months
 }
 
 .submit-btn {
+    margin-top:10px;
     width: 50%;
     border: 3px solid black;
     border-radius: 5px;
     background-color: #731515;
     color: #c0c0c0;
+}
+
+.Account-form {
+    display: flex;
+    justify-content: center;
+    max-width: 30%;
 }

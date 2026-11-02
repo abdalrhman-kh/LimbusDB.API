@@ -12,9 +12,9 @@ namespace LimbusCharts.API.Models.Domain
         public int MaxSpeed { get; set; }
 
         public Guid UpTieId { get; set; }
-        public Guid IdentityId { get; set; }
+        //public Guid? IdentityId { get; set; }
 
         public UpTie UpTie { get; set; }
-        public Identity Identity { get; set; }
+        //public Identity? Identity { get; set; }
     }
 }

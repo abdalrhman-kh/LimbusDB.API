@@ -1,5 +1,7 @@
-﻿using LimbusCharts.API.Models.DTO;
+﻿using System.Security.Claims;
+using LimbusCharts.API.Models.DTO;
 using LimbusCharts.API.Repositories.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -62,9 +64,17 @@ namespace LimbusCharts.API.Controllers
                     {
                         var jwtToken = jwtTokenRepository.CreateJWTToken(user, roles.ToList());
 
+                        Response.Cookies.Append("jwt", jwtToken, new CookieOptions
+                        {
+                            Secure = true,
+                            SameSite = SameSiteMode.None,
+                            HttpOnly = true,
+                        });
+
                         var responce = new LoginResponceDTO
                         {
                             JWTToken = jwtToken,
+                            Roles = roles.ToList()
                         };
                         return Ok(responce);
                     }
@@ -72,6 +82,17 @@ namespace LimbusCharts.API.Controllers
             }
 
             return BadRequest("Incorrect username or password");
+        }
+        [Authorize(Roles = "Writer")]
+        [HttpGet]
+        [Route("Me")]
+        public async Task<IActionResult> Me()
+        {
+            return Ok(new
+            {
+                email = User.FindFirstValue(ClaimTypes.Email),
+                role = User.FindFirstValue(ClaimTypes.Role),
+            });
         }
     }
 }

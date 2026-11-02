@@ -10,7 +10,6 @@ namespace LimbusCharts.API.Models.Domain
         public int SinnerNumber { get; set; }
         [Required]
         public string SinnerName { get; set; }
-        [Required]
         public string? SinnerSymbolImageURL { get; set;}
     }
 }

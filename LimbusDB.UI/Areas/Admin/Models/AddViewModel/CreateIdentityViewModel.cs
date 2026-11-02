@@ -20,13 +20,11 @@ namespace LimbusDB.UI.Models.AddViewModel
         public Guid SeasonId { get; set; }
 
         public List<Guid> StatusEffectIds { get; set; }
-        public List<Guid> IdentityUpTieIds { get; set; }
         public List<Guid> TraitKeyWordIds { get; set; }
         public List<Guid> StaggerThresholdIds { get; set; }
 
         public List<SinnerViewModel> SinnerOptions { get; set; }
         public List<RarityViewModel> RarityOptions { get; set; }
-        public List<IdentityUpTieViewModel> UpTieOptions { get; set; }
         public SelectList SeasonOptions { get; set; }
         public SelectList StaggerOptions { get; set; }
 

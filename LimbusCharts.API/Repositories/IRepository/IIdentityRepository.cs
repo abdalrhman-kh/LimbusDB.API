@@ -7,7 +7,7 @@ namespace LimbusCharts.API.Repositories.IRepository
     public interface IIdentityRepository
     {
         public Task<List<Identity>> GetAllAsync(string? name, int? season, string? sinner, int? rarity, int? minSpeed,
-             int? maxSpeed, string? statusEffect, string? traitKeyword, int? maxHealth, int? defenseLevel,
+             int? maxSpeed, string[]? statusEffect, string? traitKeyword, int? maxHealth, int? defenseLevel,
              double? slashResistance, double? bluntResistance, double? piercesResistance,
              bool isAscending = false, int pageNumber = 1, int pageSize = 15);
         public Task<Identity?> GetByIdAsync(Guid id);

@@ -14,8 +14,8 @@ namespace LimbusCharts.API.Repositories
             this.context = context;
         }
         public async Task<List<Identity>> GetAllAsync(string? name, int? season, string? sinner, int? rarity,
-            int? minSpeed, int? maxSpeed,string? statusEffect, string? traitKeyword, int? maxHealth, int? defenseLevel,
-            double? slashResistance, double? bluntResistance, double? piercesResistance,
+            int? minSpeed, int? maxSpeed, string[]? statusEffect, string? traitKeyword, int? maxHealth, int? defenseLevel,
+            double? slashResistance, double? bluntResistance, double? pierceResistance,
             bool isAscending = false, int pageNumber = 1, int pageSize = 15)
         {
             var identityQuery = context.Identity.Include(x => x.StatusEffects).Include(x => x.TraitKeywords).Include(x => x.StaggerThresholds)
@@ -51,10 +51,15 @@ namespace LimbusCharts.API.Repositories
                 identityQuery = identityQuery.Where(x => x.Season.SeasonNumber == season);
             }
 
-            if (!String.IsNullOrEmpty(statusEffect))
+            foreach(var status in statusEffect)
             {
-                identityQuery = identityQuery.Where(x => x.StatusEffects.Any(s => s.StatusName == statusEffect));
+                identityQuery = identityQuery.Where(x => x.StatusEffects.Any(s => s.StatusName == status));
             }
+
+            //if (!String.IsNullOrEmpty(statusEffect))
+            //{
+            //    identityQuery = identityQuery.Where(x => x.StatusEffects.Any(s => s.StatusName == statusEffect));
+            //}
 
             if (!String.IsNullOrEmpty(traitKeyword))
             {
@@ -81,9 +86,9 @@ namespace LimbusCharts.API.Repositories
                 identityQuery = identityQuery.Where(x => x.BluntResistance == bluntResistance);
             }
 
-            if (piercesResistance.HasValue)
+            if (pierceResistance.HasValue)
             {
-                identityQuery = identityQuery.Where(x => x.PierceResistance == piercesResistance);
+                identityQuery = identityQuery.Where(x => x.PierceResistance == pierceResistance);
             }
 
             identityQuery = isAscending ? identityQuery.OrderBy(x => x.ReleaseDate): identityQuery.OrderByDescending(x => x.ReleaseDate);

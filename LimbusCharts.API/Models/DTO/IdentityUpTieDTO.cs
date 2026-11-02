@@ -9,8 +9,8 @@ namespace LimbusCharts.API.Models.DTO
         public int MinSpeed { get; set; }
         public int MaxSpeed { get; set; }
 
-        public Guid UpTieId { get; set; }
+        public UpTieDTO UpTie { get; set; }
 
-        public List<Guid>? IdentityIds { get; set; }
+        //public List<Guid>? IdentityIds { get; set; }
     }
 }

@@ -13,13 +13,22 @@
         public string? UpTieImage_2 { get; set; }
         public DateOnly ReleaseDate { get; set; }
 
-        public Guid SinnerId { get; set; }
-        public Guid RarityId { get; set; }
-        public Guid SeasonId { get; set; }
+        public SinnerDTO sinner { get; set; }
+        public RarityDTO rarity { get; set; }
+        public SeasonDTO season { get; set; }
 
-        public List<Guid> StatusEffectIds { get; set; }
-        public List<Guid>? IdentityUpTieIds { get; set; }
-        public List<Guid> TraitKeyWordIds { get; set; }
-        public List<Guid> StaggerThresholdIds { get; set; }
+        public List<StatusEffectDTO> statusEffects { get; set; }
+        public List<IdentityUpTieDTO> identityUpTie { get; set; }
+        public List<TraitKeywordDTO> traitKeywords { get; set; }
+        public List<StaggerThresholdDTO> staggerThresholds { get; set; }
+
+        //public Guid SinnerId { get; set; }
+        //public Guid RarityId { get; set; }
+        //public Guid SeasonId { get; set; }
+
+        //public List<Guid> StatusEffectIds { get; set; }
+        //public List<Guid>? IdentityUpTieIds { get; set; }
+        //public List<Guid> TraitKeyWordIds { get; set; }
+        //public List<Guid> StaggerThresholdIds { get; set; }
     }
 }

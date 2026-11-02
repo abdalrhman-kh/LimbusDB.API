@@ -12,10 +12,10 @@ namespace LimbusCharts.API.Mapper
         {
             CreateMap<Identity, IdentityCreateRequestDTO>().ReverseMap();
             CreateMap<IdentityDTO, Identity>();
-            CreateMap<Identity, IdentityDTO>().ForMember(des => des.StatusEffectIds, opt => opt.MapFrom(src => src.StatusEffects.Select(i => i.Id).ToList())).
-                ForMember(des => des.TraitKeyWordIds, opt => opt.MapFrom(src => src.TraitKeywords.Select(i => i.Id).ToList()))
-                .ForMember(des => des.StaggerThresholdIds, opt => opt.MapFrom(src => src.StaggerThresholds.Select(i => i.Id).ToList()))
-                .ForMember(des => des.IdentityUpTieIds, opt => opt.MapFrom(src => src.IdentityUpTies.Select(i => i.IdentityUpTieId).ToList()));
+            CreateMap<Identity, IdentityDTO>(); //.ForMember(des => des.StatusEffectIds, opt => opt.MapFrom(src => src.StatusEffects.Select(i => i.Id).ToList())).
+            //    ForMember(des => des.TraitKeyWordIds, opt => opt.MapFrom(src => src.TraitKeywords.Select(i => i.Id).ToList()))
+            //    .ForMember(des => des.StaggerThresholdIds, opt => opt.MapFrom(src => src.StaggerThresholds.Select(i => i.Id).ToList()))
+            //    .ForMember(des => des.IdentityUpTieIds, opt => opt.MapFrom(src => src.IdentityUpTies.Select(i => i.IdentityUpTieId).ToList()));
             CreateMap<Identity, IdentityEditRequestDTO>().ReverseMap();
 
 

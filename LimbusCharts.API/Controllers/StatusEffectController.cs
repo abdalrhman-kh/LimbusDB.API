@@ -23,7 +23,7 @@ namespace LimbusCharts.API.Controllers
             this.mapper = mapper;
         }
         [HttpPost]
-        //[Authorize(Roles = "Writer")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] StatusEffectCreateRequestDTO statusEffectCreateRequestDTO)
         {
             var statusEffectDomain = mapper.Map<StatusEffect>(statusEffectCreateRequestDTO);

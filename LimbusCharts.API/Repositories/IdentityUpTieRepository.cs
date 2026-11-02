@@ -34,12 +34,12 @@ namespace LimbusCharts.API.Repositories
 
         public async Task<List<IdentityUpTie>> GetAllAsync()
         {
-            return await context.IdentityUpTie.ToListAsync();
+            return await context.IdentityUpTie.Include(x => x.UpTie).ToListAsync();
         }
 
         public async Task<IdentityUpTie?> GetByIdAsync(Guid id)
         {
-            return await context.IdentityUpTie.FirstOrDefaultAsync(x => x.IdentityUpTieId == id);
+            return await context.IdentityUpTie.Include(x => x.UpTie).FirstOrDefaultAsync(x => x.IdentityUpTieId == id);
         }
 
         public async Task<IdentityUpTie?> UpdateAsync(Guid id, IdentityUpTie identityUpTie)

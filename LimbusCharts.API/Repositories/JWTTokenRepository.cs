@@ -31,7 +31,7 @@ namespace LimbusCharts.API.Repositories
                 configuration["JWT:Issuer"],
                 configuration["JWT:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(15),
+                expires: DateTime.Now.AddMinutes(20),
                 signingCredentials: credentials
                 );
 

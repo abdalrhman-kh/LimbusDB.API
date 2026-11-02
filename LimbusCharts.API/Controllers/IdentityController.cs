@@ -23,7 +23,7 @@ namespace LimbusCharts.API.Controllers
             this.identityRepository = identityRepository;
         }
         [HttpPost]
-        //[Authorize(Roles = "Writer")]
+        [Authorize(Roles = "Writer")]
         public async Task<IActionResult> Create([FromBody] IdentityCreateRequestDTO identityCreateRequestDTO)
         {
             //covert to domain
@@ -40,12 +40,12 @@ namespace LimbusCharts.API.Controllers
         [HttpGet]
         //[Authorize(Roles = "Reader, Writer")]
         public async Task<IActionResult> GetAll([FromQuery] string? name, [FromQuery] int? season, [FromQuery] string? sinner, [FromQuery] int? rarity,
-            [FromQuery] int? minSpeed, [FromQuery] int? maxSpeed, [FromQuery] string? statusEffect, [FromQuery] string? traitKeyword,
+            [FromQuery] int? minSpeed, [FromQuery] int? maxSpeed, [FromQuery] string[]? statusEffect, [FromQuery] string? traitKeyword,
             [FromQuery] int? maxHealth, [FromQuery] int? defenseLevel, [FromQuery] double? slashResistance, [FromQuery] double? bluntResistance,
-            [FromQuery] double? piercesResistance,[FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 15)
+            [FromQuery] double? pierceResistance,[FromQuery] bool? isAscending, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 15)
         {
             var identityDomain = await identityRepository.GetAllAsync(name, season, sinner, rarity, minSpeed, maxSpeed, statusEffect, traitKeyword, maxHealth, defenseLevel, 
-                slashResistance, bluntResistance, piercesResistance, isAscending ?? true, pageNumber, pageSize);
+                slashResistance, bluntResistance, pierceResistance, isAscending ?? true, pageNumber, pageSize);
 
             var identityDTO = mapper.Map<List<IdentityDTO>>(identityDomain);
 
