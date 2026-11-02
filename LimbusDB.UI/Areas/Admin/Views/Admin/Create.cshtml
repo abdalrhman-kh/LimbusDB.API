@@ -1,0 +1,180 @@
+﻿@model LimbusDB.UI.Models.AddViewModel.CreateIdentityViewModel
+
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+<body class="main">
+	<div class="content-container">
+		<div class="image-preview-container">
+			<div class="uptie-container">
+				<h3 class="inpute-label">Uptie Art 1</h3>
+				<div class="image-bordar" id="uptie-border-1">
+					<img id="image-preview-uptie-1" src="" alt="Something is Wrong" style="display:none" class="uptie-preview inpute-label" />
+					<div id="place-holder-uptie-1">
+						<i class="bx bx-image-add"></i>
+						<p class="inpute-label">Enter image url</p>
+					</div>
+				</div>
+			</div>
+			<div class="uptie-container">
+				<h3 class="inpute-label">Uptie Art 2</h3>
+				<div class="image-bordar" id="uptie-border-2">
+					<img id="image-preview-uptie-2" src="" alt="Something is Wrong" style="display:none" class="uptie-preview inpute-label" />
+					<div id="place-holder-uptie-2">
+						<i class="bx bx-image-add"></i>
+						<p class="inpute-label">Enter image url</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-container">
+			<div class="title">Create Form</div>
+			<hr />
+			<form asp-action="Create" enctype="multipart/form-data">
+				<div class="identity-details">
+					<div class="column">
+						<div class="input-details">
+							<label asp-for="IdentityName" class="inpute-label"></label>
+							<input asp-for="IdentityName" class="form-control" />
+							<span asp-validation-for="IdentityName" class="text-danger"></span>
+						</div>
+						<div class="input-details">
+							<label asp-for="SinnerId" class="inpute-label">Sinner</label>
+							<select asp-for="SinnerId" class="form-list-sinner form-control">
+								<option value="" selected disabled>-- Select Sinner --</option>
+								@foreach(var sinner in Model.SinnerOptions)
+								{
+									<option value="@sinner.SinnerId" data-image = "@sinner.SinnerSymbolImageURL">@sinner.SinnerName</option>
+								}
+							</select>
+						</div>
+						<div class="input-details">
+							<label asp-for="SeasonId" class="inpute-label">Season</label>
+							<select asp-for="SeasonId" asp-items="@Model.SeasonOptions" class="form-control">
+								<option value="" selected disabled>-- Select Season --</option>
+							</select>
+						</div>
+					</div>
+					<div class="column">
+						<div class="input-deatils-radio">
+							@foreach (var option in Model.RarityOptions)
+							{
+								<div class="form-check">
+									<div class="radio-btn">
+										<input type="radio" name="RarityId" id="RarityType_@option.RarityType" value="@option.RarityId" class="" />
+										<label for="RarityType_@option.RarityType" class="inpute-label">
+											<img src="@option.RarityImageURL" alt="@option.RarityType + star" class="rarity-img" />
+										</label>
+									</div>
+								</div>
+							}
+						</div>
+						<div class="input-details">
+							<label asp-for="UpTieImage_1" class="inpute-label"></label>
+							<input asp-for="UpTieImage_1" class="uptie-image-1 form-control" />
+							<span asp-validation-for="UpTieImage_1" class="text-danger"></span>
+						</div>
+						<div class="input-details">
+							<label asp-for="UpTieImage_2" class="inpute-label"></label>
+							<input asp-for="UpTieImage_2" class="uptie-image-2 form-control" />
+							<span asp-validation-for="UpTieImage_2" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="input-details">
+							<label asp-for="MaxHealth" class="inpute-label"></label>
+							<input asp-for="MaxHealth" class="form-control" />
+							<span asp-validation-for="MaxHealth" class="text-danger"></span>
+						</div>
+						<div class="input-details">
+							<label asp-for="DefenseLevel" class="inpute-label"></label>
+							<input asp-for="DefenseLevel" class="form-control" />
+							<span asp-validation-for="DefenseLevel" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="input-details">
+							<label asp-for="SlashResistance" class="inpute-label"></label>
+							<input asp-for="SlashResistance" class="form-control" />
+							<span asp-validation-for="SlashResistance" class="text-danger"></span>
+						</div>
+						<div class="input-details">
+							<label asp-for="BluntResistance" class="inpute-label"></label>
+							<input asp-for="BluntResistance" class="form-control" />
+							<span asp-validation-for="BluntResistance" class="text-danger"></span>
+						</div>
+						<div class="input-details">
+							<label asp-for="PierceResistance" class="inpute-label"></label>
+							<input asp-for="PierceResistance" class="form-control" />
+							<span asp-validation-for="PierceResistance" class="text-danger"></span>
+						</div>
+					</div>
+					<div class="column">
+						<div class="input-details">
+							<label asp-for="StatusEffectIds" class="inpute-label">Status Effects</label>
+							<select asp-for="StatusEffectIds" class="form-list form-control" multiple>
+								@foreach(var item in Model.statusEffectOptions)
+								{
+									<option value="@item.Id" data-image = "@item.StatusImageURL">@item.StatusName</option>
+								}
+							</select>
+						</div>
+						<div class="input-details">
+							<label asp-for="TraitKeyWordIds" class="inpute-label">Trait Keywords</label>
+							<select asp-for="TraitKeyWordIds" asp-items="@Model.traitKeywordOptions" class="form-list form-control" multiple></select>
+						</div>
+						<div class="input-details">
+							<label asp-for="StaggerThresholdIds" class="inpute-label">Stagger Threshold</label>
+							<select asp-for="StaggerThresholdIds" asp-items="@Model.StaggerOptions" class="form-list form-control" multiple></select>
+						</div>
+					</div>
+					<div class="column">
+						<div class="input-details">
+							<label class="inpute-label">Release Date</label>
+							<input type="text" readonly class="form-control" asp-for="ReleaseDate" id="releaseDateInput" />
+						</div>
+					</div>
+					<div class="create-submit-btn">
+						<button type="submit" class="submit-btn">Save</button>
+					</div>
+				</div>
+		</form>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<script src="~/js/script.js"></script>
+	<script>
+		flatpickr("#releaseDateInput", {
+			dataFormat: "Y-m-d",
+			defaultDate: "today",
+		});
+
+		document.querySelector(".uptie-image-1").addEventListener("input", function () {
+			displayImage("place-holder-uptie-1", "image-preview-uptie-1", "uptie-border-1", this.value);
+		});
+
+		document.querySelector(".uptie-image-2").addEventListener("input", function () {
+			displayImage("place-holder-uptie-2", "image-preview-uptie-2", "uptie-border-2", this.value);
+		});
+
+		function displayImage(placeHolderId, imageId, borderId, url) {
+			var img = document.getElementById(imageId);
+			var placeHolder = document.getElementById(placeHolderId);
+			var border = document.getElementById(borderId);
+
+			if (url != "") {
+				img.src = url;
+				img.style.display = "block";
+				placeHolder.style.display = "none";
+				border.style.border = "none";
+			}
+			else{
+				img.src = "";
+				img.style.display = "none";
+				placeHolder.style.display = "block";
+				border.style.border = "2px dashed #666";
+			}
+		}
+	</script>
+</body>
